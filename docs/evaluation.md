@@ -37,14 +37,15 @@ TypeScript checking, repeats core tests, builds the library and Electron app,
 actually builds the Docker verification image, launches a real Electron
 integration test under Xvfb, and runs the bounded synchronous benchmark.
 
-The release workflow completed successfully. Its benchmark artifact recorded
-250 calls with a median of approximately
-`0.4 ms`, p95 of `1.2 ms`, and maximum of `3.2 ms` using Electron `44.0.0`,
+The clean public release passed [GitHub Actions run
+33335828392](https://github.com/mmdmcy/electron-state-bridge/actions/runs/33335828392).
+Its benchmark artifact recorded 250 calls with a median of approximately
+`0.3 ms`, p95 of `0.8 ms`, and maximum of `2.9 ms` using Electron `44.0.0`,
 Chromium `152.0.7977.54`, and Node `24.18.1`.
 
 | Check | Status | Evidence |
 |---|---|---|
-| full dependency install | verified | repository CI workflow |
+| full dependency install | verified | CI run `33335828392` |
 | 20 core tests | verified | `npm run test:core` |
 | full typecheck | verified | `npm run typecheck` |
 | library + Electron build | verified | `npm run build` |
