@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "useUnknownInCatchVariables": true,
+    "noImplicitReturns": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "types": [],
+    "lib": ["ES2022", "DOM"],
+    "rootDir": "src",
+    "outDir": ".test-build"
+  },
+  "include": [
+    "src/library/core/**/*.ts",
+    "src/library/renderer/**/*.ts",
+    "src/demo/domain/**/*.ts"
+  ]
+}

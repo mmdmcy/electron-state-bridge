@@ -1,0 +1,81 @@
+{
+  "name": "electron-state-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A revisioned Electron state bridge with synchronous local reads and a bounded synchronous dispatch experiment.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmdmcy/electron-state-bridge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mmdmcy/electron-state-bridge/issues"
+  },
+  "homepage": "https://github.com/mmdmcy/electron-state-bridge#readme",
+  "main": "./out/main/index.js",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "electron-vite dev",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build:library": "tsc -p tsconfig.build.json",
+    "build:app": "electron-vite build",
+    "build": "npm run build:library && npm run build:app",
+    "build:test": "tsc -p tsconfig.test-build.json",
+    "test:core": "npm run build:test && node --test tests/core/*.test.mjs",
+    "test": "npm run test:core",
+    "test:electron:built": "node scripts/run-electron-mode.mjs integration",
+    "test:electron": "npm run build && npm run test:electron:built",
+    "benchmark:sync:built": "node scripts/run-electron-mode.mjs benchmark",
+    "benchmark:sync": "npm run build && npm run benchmark:sync:built",
+    "verify:core": "npm run typecheck && npm run test:core && npm run build",
+    "verify": "npm run verify:core && npm run test:electron:built"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "24.0.0",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "@vitejs/plugin-react": "5.1.0",
+    "electron": "44.0.0",
+    "electron-vite": "5.0.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.6"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "docs"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/library/core/index.d.ts",
+      "import": "./dist/library/core/index.js"
+    },
+    "./renderer": {
+      "types": "./dist/library/renderer/index.d.ts",
+      "import": "./dist/library/renderer/index.js"
+    },
+    "./react": {
+      "types": "./dist/library/react/index.d.ts",
+      "import": "./dist/library/react/index.js"
+    },
+    "./electron": {
+      "types": "./dist/library/electron/index.d.ts",
+      "import": "./dist/library/electron/index.js"
+    },
+    "./demo-domain": {
+      "types": "./dist/demo/domain/index.d.ts",
+      "import": "./dist/demo/domain/index.js"
+    }
+  }
+}
